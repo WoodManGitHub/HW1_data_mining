@@ -1,0 +1,135 @@
+relationship=Husband <= 0:
+:...relationship=Wife <= 0:
+:   :...education=Doctorate > 0: >50K (101/46)
+:   :   education=Doctorate <= 0:
+:   :   :...education=Prof-school <= 0:
+:   :       :...education=Masters <= 0: <=50K (12245/646)
+:   :       :   education=Masters > 0:
+:   :       :   :...hours-per-week <= 43: <=50K (345/53)
+:   :       :       hours-per-week > 43:
+:   :       :       :...occupation=Prof-specialty <= 0: >50K (101/39)
+:   :       :           occupation=Prof-specialty > 0: <=50K (102/23)
+:   :       education=Prof-school > 0:
+:   :       :...workclass=Self-emp-inc > 0: >50K (7)
+:   :           workclass=Self-emp-inc <= 0:
+:   :           :...workclass=Federal-gov > 0: >50K (8/1)
+:   :               workclass=Federal-gov <= 0:
+:   :               :...workclass=Self-emp-not-inc <= 0: <=50K (83/29)
+:   :                   workclass=Self-emp-not-inc > 0: >50K (22/6)
+:   relationship=Wife > 0:
+:   :...occupation=Other-service > 0: <=50K (145/25)
+:       occupation=Other-service <= 0:
+:       :...education=Masters > 0: >50K (86/15)
+:           education=Masters <= 0:
+:           :...age <= 24: <=50K (50/6)
+:               age > 24:
+:               :...occupation=Machine-op-inspct > 0: <=50K (57/13)
+:                   occupation=Machine-op-inspct <= 0:
+:                   :...education=Bachelors > 0: >50K (193/57)
+:                       education=Bachelors <= 0:
+:                       :...occupation=Sales > 0: <=50K (79/22)
+:                           occupation=Sales <= 0:
+:                           :...race=Black > 0: <=50K (56/16)
+:                               race=Black <= 0:
+:                               :...occupation=Prof-specialty > 0: >50K (75/22)
+:                                   occupation=Prof-specialty <= 0:
+:                                   :...age <= 34: <=50K (123/45)
+:                                       age > 34: [S1]
+relationship=Husband > 0:
+:...education=5th-6th > 0: <=50K (92/4)
+    education=5th-6th <= 0:
+    :...education=Prof-school > 0: >50K (298/46)
+        education=Prof-school <= 0:
+        :...education=Masters > 0:
+            :...hours-per-week <= 31: <=50K (29/9)
+            :   hours-per-week > 31: >50K (636/125)
+            education=Masters <= 0:
+            :...education=Doctorate > 0: >50K (194/31)
+                education=Doctorate <= 0:
+                :...education=Bachelors > 0:
+                    :...hours-per-week <= 31: <=50K (97/27)
+                    :   hours-per-week > 31:
+                    :   :...occupation=Farming-fishing <= 0: >50K (1693/493)
+                    :       occupation=Farming-fishing > 0:
+                    :       :...workclass=Self-emp-inc <= 0: <=50K (34/11)
+                    :           workclass=Self-emp-inc > 0: >50K (4)
+                    education=Bachelors <= 0:
+                    :...education=7th-8th > 0: <=50K (238/23)
+                        education=7th-8th <= 0:
+                        :...education=9th > 0: <=50K (153/13)
+                            education=9th <= 0:
+                            :...hours-per-week <= 34: <=50K (387/48)
+                                hours-per-week > 34:
+                                :...age <= 35: [S2]
+                                    age > 35: [S3]
+
+SubTree [S1]
+
+workclass=Self-emp-not-inc <= 0: >50K (249/97)
+workclass=Self-emp-not-inc > 0: <=50K (18/5)
+
+SubTree [S2]
+
+occupation=Exec-managerial <= 0: <=50K (1838/401)
+occupation=Exec-managerial > 0:
+:...workclass=Self-emp-not-inc > 0: <=50K (24/4)
+    workclass=Self-emp-not-inc <= 0:
+    :...age <= 29: <=50K (46/12)
+        age > 29:
+        :...education=Some-college <= 0: <=50K (50/20)
+            education=Some-college > 0: >50K (53/21)
+
+SubTree [S3]
+
+race=Amer-Indian-Eskimo > 0: <=50K (31/4)
+race=Amer-Indian-Eskimo <= 0:
+:...education=11th > 0: <=50K (119/22)
+    education=11th <= 0:
+    :...occupation=Farming-fishing > 0: <=50K (220/48)
+        occupation=Farming-fishing <= 0:
+        :...education=10th > 0: <=50K (145/32)
+            education=10th <= 0:
+            :...occupation=Other-service > 0: <=50K (158/37)
+                occupation=Other-service <= 0:
+                :...occupation=Handlers-cleaners > 0: <=50K (110/28)
+                    occupation=Handlers-cleaners <= 0:
+                    :...workclass=Self-emp-inc > 0:
+                        :...occupation=Craft-repair <= 0: >50K (186/56)
+                        :   occupation=Craft-repair > 0:
+                        :   :...hours-per-week <= 42: <=50K (15/3)
+                        :       hours-per-week > 42: >50K (19/6)
+                        workclass=Self-emp-inc <= 0:
+                        :...workclass=Federal-gov > 0: >50K (152/54)
+                            workclass=Federal-gov <= 0:
+                            :...occupation=Tech-support > 0: >50K (109/38)
+                                occupation=Tech-support <= 0:
+                                :...occupation=Exec-managerial > 0:
+                                    :...education=Assoc-acdm > 0: >50K (31/4)
+                                    :   education=Assoc-acdm <= 0: [S4]
+                                    occupation=Exec-managerial <= 0: [S5]
+
+SubTree [S4]
+
+workclass=Self-emp-not-inc <= 0: >50K (307/115)
+workclass=Self-emp-not-inc > 0: <=50K (79/31)
+
+SubTree [S5]
+
+workclass=Self-emp-not-inc > 0: <=50K (237/70)
+workclass=Self-emp-not-inc <= 0:
+:...occupation=Prof-specialty > 0: >50K (141/57)
+    occupation=Prof-specialty <= 0:
+    :...occupation=Sales > 0:
+        :...education=HS-grad <= 0: >50K (181/68)
+        :   education=HS-grad > 0: <=50K (140/67)
+        occupation=Sales <= 0:
+        :...occupation=Protective-serv <= 0:
+            :...education=Assoc-voc <= 0: <=50K (1479/580)
+            :   education=Assoc-voc > 0: >50K (109/50)
+            occupation=Protective-serv > 0:
+            :...age > 56: <=50K (18/2)
+                age <= 56:
+                :...workclass=State-gov <= 0: >50K (86/23)
+                    workclass=State-gov > 0: <=50K (28/8)
+
+
